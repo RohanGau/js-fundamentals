@@ -89,8 +89,6 @@ export default function flattern(value) {
     for(let i = 0; i < value.length; i++) {
         if(Array.isArray(value[i])) {
             value.splice(i, 1, ...value[i]);
-        } else { 
-            i++;
         }
     }
     return value;
