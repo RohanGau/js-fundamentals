@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Fundamentals Playground</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: "Inter", system-ui, -apple-system, sans-serif; margin: 0; padding: 24px; background: #0f172a; color: #e2e8f0; }
+    .card { max-width: 960px; margin: 0 auto; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+    h1 { margin: 0 0 12px; letter-spacing: -0.5px; }
+    p { margin: 0 0 12px; color: #cbd5e1; }
+    select, button { font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #e2e8f0; }
+    button { cursor: pointer; border-color: #22d3ee; }
+    pre { background: #0b1224; border-radius: 12px; padding: 14px; overflow: auto; border: 1px solid rgba(255,255,255,0.08); }
+    code { color: #f8fafc; }
+    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    small { color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>JS Fundamentals Playground</h1>
+    <p>Select a module, run its demo, and inspect the output below (and in your browser console).</p>
+
+    <div class="row" style="margin: 12px 0 8px;">
+      <label for="module">Module:</label>
+      <select id="module">
+        <option value="classNames">polyfills/classNames</option>
+        <option value="arrayMap">polyfills/arrayMap</option>
+        <option value="arrayFilter">polyfills/arrayFilter</option>
+        <option value="arrayReduce">polyfills/arrayReduce</option>
+        <option value="promiseAll">polyfills/promiseAll</option>
+        <option value="promiseAny">polyfills/promiseAny</option>
+        <option value="flatten">polyfills/flatten</option>
+        <option value="debounce">core/debounce</option>
+        <option value="throttle">core/throttle</option>
+        <option value="curry">core/curry</option>
+        <option value="deepClone">core/deepClone</option>
+        <option value="generators">core/generatorExamples</option>
+      </select>
+      <button id="run">Run Demo</button>
+    </div>
+    <small>Tip: open DevTools console to see logs.</small>
+
+    <h3>Output</h3>
+    <pre><code id="output">Select a module and click "Run Demo".</code></pre>
+  </div>
+
+  <script type="module">
+    const output = document.querySelector("#output");
+    const moduleSelect = document.querySelector("#module");
+    const demos = {
+      classNames: async () => {
+        const { classNames } = await import("../dist/polyfills/classNames.js");
+        const result = classNames("btn", { active: true, disabled: false }, ["primary", () => "lg"]);
+        return { result };
+      },
+      arrayMap: async () => {
+        await import("../dist/polyfills/arrayMap.js");
+        return { result: [1, 2, 3].myMap((x) => x * 3) };
+      },
+      arrayFilter: async () => {
+        await import("../dist/polyfills/arrayFilter.js");
+        return { result: [1, 2, 3, 4, 5].myFilter((x) => x % 2 === 0) };
+      },
+      arrayReduce: async () => {
+        await import("../dist/polyfills/arrayReduce.js");
+        return { result: [1, 2, 3].myReduce((acc, x) => acc + x, 10) };
+      },
+      promiseAll: async () => {
+        const { promiseAll } = await import("../dist/polyfills/promiseAll.js");
+        const res = await promiseAll([Promise.resolve("A"), Promise.resolve("B")]);
+        return { result: res };
+      },
+      promiseAny: async () => {
+        const { promiseAny } = await import("../dist/polyfills/promiseAny.js");
+        const res = await promiseAny([Promise.reject("x"), Promise.resolve("first success")]);
+        return { result: res };
+      },
+      flatten: async () => {
+        const { flatten } = await import("../dist/polyfills/flatten.js");
+        return { result: flatten([1, [2, [3, 4]], 5]) };
+      },
+      debounce: async () => {
+        const { debounce } = await import("../dist/core/debounce.js");
+        let count = 0;
+        const fn = debounce(() => count++, 200);
+        fn(); fn(); fn();
+        await new Promise((r) => setTimeout(r, 250));
+        return { result: count };
+      },
+      throttle: async () => {
+        const { throttle } = await import("../dist/core/throttle.js");
+        let count = 0;
+        const fn = throttle(() => count++, 200);
+        fn(); fn(); fn();
+        await new Promise((r) => setTimeout(r, 250));
+        return { result: count };
+      },
+      curry: async () => {
+        const { curry } = await import("../dist/core/curry.js");
+        const sum3 = (a, b, c) => a + b + c;
+        const curried = curry(sum3);
+        return { result: curried(1)(2)(3) };
+      },
+      deepClone: async () => {
+        const { deepClone } = await import("../dist/core/deepClone.js");
+        const original = { nested: { a: 1 }, arr: [1, 2] };
+        const cloned = deepClone(original);
+        const mutated = (cloned.nested.a = 42);
+        return { original, cloned, mutated };
+      },
+      generators: async () => {
+        const { generatorWithDelegate, idMaker } = await import("../dist/core/generatorExamples.js");
+        const seq = [...generatorWithDelegate(5)];
+        const ids = [];
+        const g = idMaker(10);
+        ids.push(g.next().value, g.next().value, g.next().value);
+        return { seq, ids };
+      },
+    };
+
+    document.querySelector("#run")?.addEventListener("click", async () => {
+      const key = moduleSelect.value;
+      output.textContent = "Loading...";
+      try {
+        const res = await demos[key]();
+        console.log(`[${key}]`, res);
+        output.textContent = JSON.stringify(res, null, 2);
+      } catch (err) {
+        console.error(err);
+        output.textContent = String(err);
+      }
+    });
+  </script>
+</body>
+</html>

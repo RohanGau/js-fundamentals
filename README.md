@@ -1,40 +1,41 @@
-# JavaScript Fundamentals
+# JavaScript Fundamentals (TypeScript Edition)
 
-This repository contains a well-organized collection of essential JavaScript concepts, polyfills, and core interview questions. Every concept is broken down into easy-to-understand explanations and implemented from scratch using vanilla JavaScript.
+A **MAANG-grade** JS/TS fundamentals kit: idiomatic implementations of core concepts, polyfills, and interview-ready snippets with tests you can run locally or in CI.
 
-Whether you're preparing for frontend interviews or brushing up your JS knowledge, this repo provides practical, real-world problems and detailed insights into how JavaScript works under the hood.
+## What’s inside
 
----
+- Polyfills with spec-accurate behavior: `Array.prototype` helpers, `Promise.all`, `Promise.any`, `flatten`, `classNames`.
+- Core patterns: `debounce`, `throttle`, `curry`, `deepClone`, generator patterns.
+- All code is TypeScript-first, ESM, and ship-ready via `dist/`.
+- Vitest test suite for quick validation.
 
-## 📁 What’s Covered
+## Quickstart
 
-- ✅ Common polyfills (bind, debounce, throttle, etc.)
-- ✅ Custom utilities (deepClone, curry, compose)
-- ✅ Core concepts (closures, hoisting, scope chain, event loop)
-- ✅ JSON parser implementation
-- ✅ Edge case analysis and time/space complexities
-- ✅ Clean, testable, and modular code
+```bash
+npm install
+npm run test         # run unit tests
+npm run check        # type-check only
+npm run build        # emit JS + d.ts to dist/
+```
 
----
+### Browser playground
+- Build once: `npm run build`
+- Serve the repo root (any static server). Easiest: `python3 -m http.server 4173`
+- Open http://localhost:4173/playground and pick a module from the dropdown to run its demo in the browser.
 
-## 🎯 Target Audience
+## Project layout
 
-- Frontend developers preparing for technical interviews
-- Engineers wanting to master JS internals
-- Anyone who prefers learning through building
+- `src/polyfills/*` – spec-inspired polyfills with typings.
+- `src/core/*` – core concepts and interview-friendly utilities.
+- `src/__tests__/*` – vitest specs covering the surface area.
+- `dist/` – build output (generated).
 
----
+## How to study
 
-## 📚 Usage
+1) Open the implementation, then the matching test to see expected behavior.
+2) Modify or extend, run `npm test` to validate.
+3) Use `npm run check` to keep types tight.
 
-Each folder contains:
-- `README.md` explaining the concept and real-world use cases
-- Clean JS implementation
-- Time & space complexity analysis
-- Optional test cases
+## Contribution welcome
 
----
-
-## 🙌 Contributions
-
-Contributions, improvements, or additional concepts are welcome. Please open an issue or PR.
+PRs for new concepts, performance tweaks, or additional edge-case tests are encouraged.

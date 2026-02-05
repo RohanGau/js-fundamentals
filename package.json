@@ -1,0 +1,36 @@
+{
+  "name": "js-fundamentals",
+  "version": "1.0.0",
+  "description": "This repository contains a well-organized collection of essential JavaScript concepts, polyfills, and core interview questions. Every concept is broken down into easy-to-understand explanations and implemented from scratch using vanilla JavaScript.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RohanGau/js-fundamentals.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RohanGau/js-fundamentals/issues"
+  },
+  "homepage": "https://github.com/RohanGau/js-fundamentals#readme",
+  "devDependencies": {
+    "@types/jsdom": "^27.0.0",
+    "@types/node": "^25.2.1",
+    "jsdom": "^28.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
