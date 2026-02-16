@@ -4,12 +4,12 @@ type Session = {
     equipment: String[],
 };
 
-const session: Array<Session> = [
-    { user: 8, duration: 50, equipment: ['bench'] },
-    { user: 7, duration: 150, equipment: ['dumbbell', 'kettlebell'] },
-    { user: 8, duration: 50, equipment: ['bench'] },
-    { user: 7, duration: 150, equipment: ['bench', 'kettlebell'] },
-];
+// const session: Array<Session> = [
+//     { user: 8, duration: 50, equipment: ['bench'] },
+//     { user: 7, duration: 150, equipment: ['dumbbell', 'kettlebell'] },
+//     { user: 8, duration: 50, equipment: ['bench'] },
+//     { user: 7, duration: 150, equipment: ['bench', 'kettlebell'] },
+// ];
 
 const dataMerge = (session: Array<Session>): Array<Session> => {
     const map: Map<number, Session> = new Map();
@@ -21,6 +21,7 @@ const dataMerge = (session: Array<Session>): Array<Session> => {
             for(const eq of sess.equipment) {
                 equipmentSet.add(eq);
             }
+            existingSession.equipment = Array.from(equipmentSet).sort();
         } else {
             const newSession = {
                 user: sess.user,
@@ -34,8 +35,7 @@ const dataMerge = (session: Array<Session>): Array<Session> => {
     return Array.from(map.values());
 };
 
-const result = dataMerge(session);
+// const result = dataMerge(session);
+// console.log("result :", result);
 
-console.log("result :", result);
-
-// export default dataMerge;
+export default dataMerge;
