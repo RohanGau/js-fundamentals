@@ -13,6 +13,8 @@
     "check": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "practice": "vitest --ui=false --reporter=verbose practice/",
+    "practice:ui": "vitest --ui practice/",
     "clean": "rm -rf dist"
   },
   "repository": {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { flatten } from "../polyfills/flatten";
+import { flatten } from "../polyfills/flatten.js";
 
 describe("flatten", () => {
   it("flattens nested arrays", () => {

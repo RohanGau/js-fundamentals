@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["ES2021", "DOM"],
-    "module": "ES2020",
-    "moduleResolution": "Node",
+    "target": "ES2022", // Node.js v24 supports ES2022 features
+    "lib": ["ES2022", "DOM"], // Match target and use latest available
+    "module": "NodeNext", // Use NodeNext for best Node.js compatibility
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,

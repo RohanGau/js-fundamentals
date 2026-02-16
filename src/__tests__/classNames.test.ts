@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { classNames } from "../polyfills/classNames";
+import { classNames } from "../polyfills/classNames.js";
 
 describe("classNames", () => {
   it("concats strings and numbers", () => {

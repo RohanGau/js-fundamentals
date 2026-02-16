@@ -1,41 +1,242 @@
-# JavaScript Fundamentals (TypeScript Edition)
+# JavaScript Fundamentals
 
-A **MAANG-grade** JS/TS fundamentals kit: idiomatic implementations of core concepts, polyfills, and interview-ready snippets with tests you can run locally or in CI.
+A comprehensive collection of JavaScript/TypeScript fundamentals with polyfills, core concepts, and a streamlined practice workflow for learning.
 
-## What’s inside
+## Features
 
-- Polyfills with spec-accurate behavior: `Array.prototype` helpers, `Promise.all`, `Promise.any`, `flatten`, `classNames`.
-- Core patterns: `debounce`, `throttle`, `curry`, `deepClone`, generator patterns.
-- All code is TypeScript-first, ESM, and ship-ready via `dist/`.
-- Vitest test suite for quick validation.
+- ✅ **Production-ready implementations** of Array, Promise polyfills and utilities
+- ✅ **Core patterns**: debounce, throttle, curry, deep clone, generators
+- ✅ **Comprehensive test coverage** with Vitest
+- ✅ **Practice workflow** for hands-on learning with instant feedback
+- ✅ **TypeScript-first** with full type safety
+- ✅ **Browser playground** for interactive demos
 
-## Quickstart
+---
 
+## Quick Start
+
+### Installation
 ```bash
 npm install
-npm run test         # run unit tests
-npm run check        # type-check only
-npm run build        # emit JS + d.ts to dist/
 ```
 
-### Browser playground
-- Build once: `npm run build`
-- Serve the repo root (any static server). Easiest: `python3 -m http.server 4173`
-- Open http://localhost:4173/playground and pick a module from the dropdown to run its demo in the browser.
+### Practice Mode (Recommended for Learning)
+The fastest way to learn - write code and see results instantly!
 
-## Project layout
+```bash
+# Start practice mode (auto-runs tests on save)
+npm run practice
 
-- `src/polyfills/*` – spec-inspired polyfills with typings.
-- `src/core/*` – core concepts and interview-friendly utilities.
-- `src/__tests__/*` – vitest specs covering the surface area.
-- `dist/` – build output (generated).
+# Try the starter examples
+# Edit practice/starter.ts and save to see tests run!
+```
 
-## How to study
+**Learn a specific topic:**
+```bash
+# Practice implementing Array.map
+./practice-topic.sh arrayMap
 
-1) Open the implementation, then the matching test to see expected behavior.
-2) Modify or extend, run `npm test` to validate.
-3) Use `npm run check` to keep types tight.
+# Then start watching
+npm run practice
+```
 
-## Contribution welcome
+See the [Practice Guide](practice/README.md) for full workflow.
 
-PRs for new concepts, performance tweaks, or additional edge-case tests are encouraged.
+---
+
+## Available Topics
+
+### Polyfills
+- **Array Methods**: `arrayMap`, `arrayFilter`, `arrayReduce`
+- **Promise Methods**: `promiseAll`, `promiseAny`
+- **Utilities**: `classNames`, `flatten`
+
+### Core Concepts
+- **Performance**: `debounce`, `throttle`
+- **Functional**: `curry`, `deepClone`
+- **Advanced**: `generators`
+
+See [practice/TOPICS.md](practice/TOPICS.md) for detailed topic list with references.
+
+---
+
+## Project Structure
+
+```
+js-fundamentals/
+├── src/
+│   ├── polyfills/          # Array, Promise polyfills
+│   ├── core/               # Core patterns and utilities
+│   └── __tests__/          # Test suites
+├── practice/               # 👈 Your practice workspace
+│   ├── starter.ts          # Example implementations
+│   ├── starter.test.ts     # Example tests
+│   ├── _template.ts        # Template for new topics
+│   ├── README.md           # Practice workflow guide
+│   └── TOPICS.md           # All available topics
+├── playground/             # Browser demo
+│   └── index.html
+├── practice-topic.sh       # Generate practice files from topics
+└── dist/                   # Build output
+```
+
+---
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run practice` | **Practice mode** - Auto-run tests on save |
+| `npm test` | Run all tests once |
+| `npm run test:watch` | Run all tests in watch mode |
+| `npm run build` | Compile TypeScript to JavaScript |
+| `npm run check` | Type-check without building |
+| `./practice-topic.sh <topic>` | Create practice files from existing topics |
+
+---
+
+## Practice Workflow
+
+### 1. Pick a Topic
+```bash
+# See available topics
+./practice-topic.sh
+
+# Practice Array.map (guided mode)
+./practice-topic.sh arrayMap
+```
+
+### 2. Start Practice Mode
+```bash
+npm run practice
+```
+
+### 3. Code & Learn
+- Edit the generated practice files
+- Save your changes
+- Tests run automatically
+- Fix issues and save again
+- Repeat until all tests pass! ✅
+
+**Modes:**
+- `guided` (default) - Get test hints, implement solution
+- `blank` - Start from scratch
+- `study` - Copy working code to study
+
+---
+
+## Browser Playground
+
+Try implementations in your browser:
+
+```bash
+# Build the project
+npm run build
+
+# Start a local server
+python3 -m http.server 8000
+# OR
+npx http-server -p 8000
+
+# Open browser
+open http://localhost:8000/playground/index.html
+```
+
+Select a module from the dropdown and click "Run Demo" to see it in action!
+
+---
+
+## Learning Path
+
+**Beginner:**
+1. `arrayMap` - Start here!
+2. `arrayFilter` - Build on map knowledge  
+3. `classNames` - String manipulation
+
+**Intermediate:**
+4. `arrayReduce` - Most powerful array method
+5. `flatten` - Recursion practice
+6. `debounce` / `throttle` - Timing control
+
+**Advanced:**
+7. `promiseAll` / `promiseAny` - Async patterns
+8. `curry` - Function composition
+9. `deepClone` - Object traversal
+10. `generators` - Lazy iteration
+
+---
+
+## How to Study
+
+### Option 1: Practice Implementation
+Use practice mode to implement concepts from scratch with test guidance.
+
+### Option 2: Read & Modify
+Explore implementations in `src/` folder and modify them to learn.
+
+### Option 3: Browser Testing
+Build the project and use the playground to see code in action.
+
+---
+
+## Examples
+
+### Practice Array.map
+```bash
+./practice-topic.sh arrayMap guided
+npm run practice
+# Implement in the generated file, save, watch tests run!
+```
+
+### Study Existing Implementation
+```bash
+./practice-topic.sh promiseAll study
+# Opens working implementation + tests for you to explore
+```
+
+### Create Custom Practice
+```bash
+# Copy template
+cp practice/_template.ts practice/myTopic.ts
+cp practice/_template.test.ts practice/myTopic.test.ts
+
+# Start watching
+npm run practice
+```
+
+---
+
+## Contributing
+
+PRs welcome for:
+- New implementations or concepts
+- Performance improvements
+- Additional test cases
+- Documentation improvements
+
+---
+
+## Tech Stack
+
+- **TypeScript** - Type-safe JavaScript
+- **Vitest** - Fast unit testing
+- **ESM** - Modern module system
+- **Node.js** - Runtime
+
+---
+
+## License
+
+ISC
+
+---
+
+## Links
+
+- [Practice Guide](practice/README.md) - Detailed practice workflow
+- [Available Topics](practice/TOPICS.md) - All topics with references
+- [Repository](https://github.com/RohanGau/js-fundamentals)
+
+---
+
+**Happy Learning! 🚀**

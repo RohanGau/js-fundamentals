@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import "../polyfills/arrayMap";
-import "../polyfills/arrayFilter";
-import "../polyfills/arrayReduce";
+import "../polyfills/arrayMap.js";
+import "../polyfills/arrayFilter.js";
+import "../polyfills/arrayReduce.js";
 
 describe("array polyfills", () => {
   it("myMap doubles numbers", () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { promiseAll } from "../polyfills/promiseAll";
-import { promiseAny } from "../polyfills/promiseAny";
+import { promiseAll } from "../polyfills/promiseAll.js";
+import { promiseAny } from "../polyfills/promiseAny.js";
 
 describe("promise polyfills", () => {
   it("promiseAll resolves in order", async () => {
