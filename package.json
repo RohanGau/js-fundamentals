@@ -13,9 +13,8 @@
     "check": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "practice": "vitest --ui=false --reporter=verbose practice/",
-    "practice:ui": "vitest --ui practice/",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "serve": "npm run build && npx http-server -p 3000 -o /playground/index.html"
   },
   "repository": {
     "type": "git",

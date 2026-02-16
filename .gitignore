@@ -27,7 +27,3 @@ coverage/
 
 # Misc
 *.tgz
-
-# Practice files (keep templates and starter, ignore generated)
-practice/*_20*.ts
-practice/*_20*.test.ts
