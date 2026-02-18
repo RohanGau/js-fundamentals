@@ -39,6 +39,7 @@
         <option value="deepClone">core/deepClone</option>
         <option value="generators">core/generatorExamples</option>
         <option value="dataMerge">core/dataMerge</option>
+        <option value="deepEqual">core/deepEqual</option>
       </select>
       <button id="run">Run Demo</button>
     </div>
@@ -130,6 +131,12 @@
           { user: 7, duration: 150, equipment: ['bench', 'kettlebell'] },
         ];
         const result = dataMerge(sessions);
+        return { result };
+      },
+      deepEqual: async () => {
+        const mod = await import("../dist/core/deepEqual.js");
+        const deepEqual = mod.default;
+        const result = deepEqual({ foo: 'bar', id: 1 }, { foo: 'bar', id: 1 });
         return { result };
       },
     };
